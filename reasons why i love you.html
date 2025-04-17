@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reasons Why I Love You</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e3f2fd; /* Light blue background */
+      color: #333;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ff7043; /* Orange */
+      margin-bottom: 20px;
+    }
+    .reason-box {
+      margin: 20px;
+      padding: 20px;
+      background: #ffffff; /* White background */
+      border: 2px solid #ff7043; /* Orange border */
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 1.5em;
+      color: #1976d2; /* Blue text */
+      display: none;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #ff7043; /* Orange */
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    .button:hover {
+      background-color: #f4511e; /* Darker orange */
+    }
+  </style>
+</head>
+<body>
+  <h1>Reasons Why I Love You</h1>
+  <div id="reason-box" class="reason-box"></div>
+  <div class="buttons">
+    <button id="back-button" class="button" onclick="goBack()" style="display: none;">Back</button>
+    <button id="next-button" class="button" onclick="showReason()">Next</button>
+  </div>
+
+  <script>
+    const reasons = [
+      "You make me feel safe.",
+      "You support my dreams.",
+      "You're my best friend.",
+      "I can be 100% myself with you.",
+      "You give the best hugs.",
+      "You believe in me even when I don't.",
+      "Your smile melts me. (HEHEHEHE)",
+      "You're patient with me.",
+      "You remember the little things.",
+      "You're always there for me.",
+      "You make even boring days fun.",
+      "You respect me.",
+      "You love me even when I’m a mess.",
+      "You’re honest.",
+      "You make me feel wanted.",
+      "You're goofy with me.",
+      "You’re trustworthy.",
+      "You hold my hand at the perfect times.",
+      "You’re my safe space.",
+      "You’re so pogi.",
+      "You’re proud of me.",
+      "You laugh at my bad jokes.",
+      "You always find time for me.",
+      "You’re romantic in your own way.",
+      "You tell me I’m enough.",
+      "You protect me.",
+      "You’ve seen me at my worst and stayed.",
+      "You make me want to be better.",
+      "You let me be weird.",
+      "You’re loyal.",
+      "You’re silly with me.",
+      "You take care of me.",
+      "You remember what I like.",
+      "You accept all of me.",
+      "You say sorry when it matters.",
+      "You always try, even when it's hard.",
+      "You see the best in me.",
+      "You take care of the little things without being asked.",
+      "You let me cry saimo.",
+      "You’re not afraid to love deeply.",
+      "You’re you—and that’s everything.",
+      "You never make me feel like I'm too much.",
+      "You always make room for me in your life.",
+      "You’re gentle with my insecurities."
+
+    ];
+
+    let currentReason = 0;
+
+    function showReason() {
+      const reasonBox = document.getElementById("reason-box");
+      const backButton = document.getElementById("back-button");
+      const nextButton = document.getElementById("next-button");
+
+      // Show the current reason
+      reasonBox.innerText = reasons[currentReason];
+      reasonBox.style.display = "block";
+
+      // Show or hide the "Back" button
+      if (currentReason > 0) {
+        backButton.style.display = "inline-block";
+      } else {
+        backButton.style.display = "none";
+      }
+
+      // Update the "Next" button
+      if (currentReason < reasons.length - 1) {
+        nextButton.innerText = "Next";
+      } else {
+        nextButton.innerText = "Read Again from the Start";
+      }
+    }
+
+    function goBack() {
+      const reasonBox = document.getElementById("reason-box");
+      const backButton = document.getElementById("back-button");
+      const nextButton = document.getElementById("next-button");
+
+      // Go back to the previous reason
+      if (currentReason > 0) {
+        currentReason--;
+        reasonBox.innerText = reasons[currentReason];
+      }
+
+      // Show or hide the "Back" button
+      if (currentReason > 0) {
+        backButton.style.display = "inline-block";
+      } else {
+        backButton.style.display = "none";
+      }
+
+      // Update the "Next" button
+      if (currentReason < reasons.length - 1) {
+        nextButton.innerText = "Next";
+      }
+    }
+
+    document.getElementById("next-button").addEventListener("click", () => {
+      if (currentReason < reasons.length - 1) {
+        currentReason++;
+        showReason();
+      } else {
+        // Restart from the beginning
+        currentReason = 0;
+        showReason();
+      }
+    });
+  </script>
+</body>
+</html>
